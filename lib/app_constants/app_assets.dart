@@ -6,6 +6,7 @@ class AppAssets {
   static const messageIcon = "assets/images/message.svg";
   static const notificationIcon = "assets/images/notification.svg";
   static const phoneIcon = "assets/images/phone.svg";
+  static const phoneIcon2 = "assets/images/phoneIcon2.svg";
   static const timeIcon = "assets/images/time.svg";
   static const addIcon = "assets/images/addIcon.svg";
   static const numberPlateIcon = "assets/images/number_plate.svg";

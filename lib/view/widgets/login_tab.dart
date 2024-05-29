@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:indapoint_interview_task/app_constants/app_assets.dart';
 import 'package:indapoint_interview_task/app_constants/app_colors.dart';
 import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
 import 'package:indapoint_interview_task/view/widgets/custom_button.dart';
@@ -34,16 +36,30 @@ class LoginTab extends StatelessWidget {
           const SizedBox(height: 30),
           TextField(
             decoration: InputDecoration(
-              prefixIcon: const Icon(
-                Icons.phone,
-                color: AppColors.hintTextGray,
+              prefixIconConstraints:
+                  const BoxConstraints(minHeight: 15, minWidth: 18),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.only(right: 3),
+                child: SvgPicture.asset(
+                  AppAssets.phoneIcon2,
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.hintTextGray,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
-              hintText: 'Phone Number',
+              hintText: '  Phone Number',
               hintStyle: AppTextStyle.hintTextStyle,
-              enabledBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.hintTextGray)),
+              focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: AppColors.hintTextGray,
+                ),
+              ),
               border: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.hintTextGray)),
+                borderSide: BorderSide(
+                  color: AppColors.hintTextGray,
+                ),
+              ),
             ),
             keyboardType: TextInputType.phone,
           ),
