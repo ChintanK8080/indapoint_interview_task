@@ -10,7 +10,22 @@ class ChildrenDetailTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+      padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: const BorderRadius.all(
+          Radius.circular(12),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.black.withOpacity(0.05),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -24,7 +39,15 @@ class ChildrenDetailTile extends StatelessWidget {
                       height: 80,
                       width: 80,
                       decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: AppColors.primaryTeal),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpbGRyZW58ZW58MHx8MHx8fDA%3D",
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                        shape: BoxShape.circle,
+                        color: AppColors.black,
+                      ),
                     ),
                     const SizedBox(width: 16),
                     ConstrainedBox(
@@ -40,11 +63,19 @@ class ChildrenDetailTile extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            "school: ${"xyz" * 20}",
+                            "school: ${"New York School"}",
                             style: AppTextStyle.textButtonStyle.copyWith(
                               color: AppColors.bodyTextGray,
                             ),
-                            maxLines: 2,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            "Female \u2022 10 years old",
+                            style: AppTextStyle.textButtonStyle.copyWith(
+                              color: AppColors.bodyTextGray,
+                            ),
+                            maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ],
@@ -109,13 +140,10 @@ class ChildrenDetailTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: (MediaQuery.of(context).size.width - 50) / 3,
+                width: (MediaQuery.of(context).size.width - 41) / 3,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   color: AppColors.primaryTeal,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(10),
-                  ),
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
@@ -129,7 +157,7 @@ class ChildrenDetailTile extends StatelessWidget {
                 color: AppColors.white,
               ),
               Container(
-                width: (MediaQuery.of(context).size.width - 50) / 3,
+                width: (MediaQuery.of(context).size.width - 41) / 3,
                 alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 decoration: const BoxDecoration(color: AppColors.primaryTeal),
@@ -144,14 +172,11 @@ class ChildrenDetailTile extends StatelessWidget {
                 color: AppColors.white,
               ),
               Container(
-                width: (MediaQuery.of(context).size.width - 50) / 3,
+                width: (MediaQuery.of(context).size.width - 41) / 3,
                 alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 decoration: const BoxDecoration(
                   color: AppColors.primaryTeal,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(10),
-                  ),
                 ),
                 child: Text(
                   "Locate",

@@ -34,6 +34,19 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 100,
+        title: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Image.asset(AppAssets.appIcon)),
+        actions: [
+          SvgPicture.asset(AppAssets.messageIcon),
+          const SizedBox(width: 16),
+          SvgPicture.asset(AppAssets.notificationIcon),
+          const SizedBox(width: 22),
+        ],
+        backgroundColor: AppColors.primaryTeal,
+      ),
       body: Column(children: [
         Expanded(
             child: TabBarView(controller: tabController, children: [
@@ -41,6 +54,7 @@ class _HomePageState extends State<HomePage>
             height: MediaQuery.of(context).size.height,
           ),
           ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             itemBuilder: (context, index) => const ChildrenDetailTile(),
             itemCount: 10,
             separatorBuilder: (context, index) => const SizedBox(height: 20),
@@ -143,7 +157,9 @@ class _HomePageState extends State<HomePage>
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: AppColors.primaryTeal,
-        child: const Icon(Icons.add),
+        child: SvgPicture.asset(
+          AppAssets.addIcon,
+        ),
       ),
     );
   }
