@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:indapoint_interview_task/app_constants/app_assets.dart';
 import 'package:indapoint_interview_task/app_constants/app_colors.dart';
+import 'package:indapoint_interview_task/app_constants/app_strings.dart';
 import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
 import 'package:indapoint_interview_task/view/widgets/children_detail_tile.dart';
 
@@ -83,7 +84,7 @@ class _HomePageState extends State<HomePage>
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "Home",
+                  AppStrings.home,
                   style: AppTextStyle.bottomTabBarText.copyWith(
                       color: tabController?.index == 0
                           ? AppColors.primaryTeal
@@ -103,7 +104,7 @@ class _HomePageState extends State<HomePage>
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "Children",
+                  AppStrings.children,
                   style: AppTextStyle.bottomTabBarText.copyWith(
                       color: tabController?.index == 1
                           ? AppColors.primaryTeal
@@ -123,7 +124,7 @@ class _HomePageState extends State<HomePage>
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "Driver",
+                  AppStrings.driver,
                   style: AppTextStyle.bottomTabBarText.copyWith(
                       color: tabController?.index == 2
                           ? AppColors.primaryTeal
@@ -143,7 +144,7 @@ class _HomePageState extends State<HomePage>
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "Profile",
+                  AppStrings.profile,
                   style: AppTextStyle.bottomTabBarText.copyWith(
                       color: tabController?.index == 3
                           ? AppColors.primaryTeal

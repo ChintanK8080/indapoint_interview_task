@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:indapoint_interview_task/app_constants/app_assets.dart';
 import 'package:indapoint_interview_task/app_constants/app_colors.dart';
+import 'package:indapoint_interview_task/app_constants/app_strings.dart';
 import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
 
 class ChildrenDetailTile extends StatelessWidget {
@@ -63,7 +64,7 @@ class ChildrenDetailTile extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            "school: ${"New York School"}",
+                            "${AppStrings.school.toLowerCase()}: ${"New York School"}",
                             style: AppTextStyle.textButtonStyle.copyWith(
                               color: AppColors.bodyTextGray,
                             ),
@@ -71,7 +72,7 @@ class ChildrenDetailTile extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            "Female \u2022 10 years old",
+                            "${AppStrings.female} \u2022 10 years old",
                             style: AppTextStyle.textButtonStyle.copyWith(
                               color: AppColors.bodyTextGray,
                             ),
@@ -89,7 +90,7 @@ class ChildrenDetailTile extends StatelessWidget {
                   children: [
                     SvgPicture.asset(AppAssets.driverIcon, width: 18),
                     const SizedBox(width: 8),
-                    Text("Driver: arjun",
+                    Text("${AppStrings.driver}: arjun",
                         style: AppTextStyle.textButtonStyle
                             .copyWith(color: AppColors.bodyTextGray)),
                   ],
@@ -101,7 +102,7 @@ class ChildrenDetailTile extends StatelessWidget {
                   children: [
                     SvgPicture.asset(AppAssets.phoneIcon, width: 18),
                     const SizedBox(width: 8),
-                    Text("Driver’s Phone Number: +91 123456789",
+                    Text("${AppStrings.driverPhoneNumber}: +91 123456789",
                         style: AppTextStyle.textButtonStyle
                             .copyWith(color: AppColors.bodyTextGray)),
                   ],
@@ -113,7 +114,7 @@ class ChildrenDetailTile extends StatelessWidget {
                   children: [
                     SvgPicture.asset(AppAssets.timeIcon, width: 18),
                     const SizedBox(width: 8),
-                    Text("School Timings: 7:30 am to 12:30 pm",
+                    Text("${AppStrings.schoolTimings}: 7:30 am to 12:30 pm",
                         style: AppTextStyle.textButtonStyle
                             .copyWith(color: AppColors.bodyTextGray)),
                   ],
@@ -125,7 +126,7 @@ class ChildrenDetailTile extends StatelessWidget {
                   children: [
                     SvgPicture.asset(AppAssets.numberPlateIcon, width: 18),
                     const SizedBox(width: 8),
-                    Text("Vehicle: Maruti Suzuki Eeco",
+                    Text("${AppStrings.vehicle}: Maruti Suzuki Eeco",
                         style: AppTextStyle.textButtonStyle
                             .copyWith(color: AppColors.bodyTextGray)),
                   ],
@@ -147,7 +148,7 @@ class ChildrenDetailTile extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  "Vehicle Fees",
+                  AppStrings.vehicalFees,
                   style: AppTextStyle.textButtonStyle
                       .copyWith(color: AppColors.white),
                 ),
@@ -162,7 +163,7 @@ class ChildrenDetailTile extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 decoration: const BoxDecoration(color: AppColors.primaryTeal),
                 child: Text(
-                  "Driver Details",
+                  AppStrings.driverDetails,
                   style: AppTextStyle.textButtonStyle
                       .copyWith(color: AppColors.white),
                 ),
@@ -179,7 +180,7 @@ class ChildrenDetailTile extends StatelessWidget {
                   color: AppColors.primaryTeal,
                 ),
                 child: Text(
-                  "Locate",
+                  AppStrings.locate,
                   style: AppTextStyle.textButtonStyle
                       .copyWith(color: AppColors.white),
                 ),

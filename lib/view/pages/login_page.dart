@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:indapoint_interview_task/app_constants/app_colors.dart';
+import 'package:indapoint_interview_task/app_constants/app_strings.dart';
 import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
 import 'package:indapoint_interview_task/view/widgets/login_tab.dart';
 import 'package:indapoint_interview_task/view/widgets/signup_tab.dart';
@@ -27,10 +28,10 @@ class LoginPage extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                              text: "Poolit ",
+                              text: "${AppStrings.poolit} ",
                               style: AppTextStyle.appbarTitleStyle1),
                           TextSpan(
-                            text: "Driver",
+                            text: AppStrings.driver,
                             style: AppTextStyle.appbarTitleStyle2,
                           )
                         ],
@@ -43,8 +44,8 @@ class LoginPage extends StatelessWidget {
                       width: 200,
                       child: TabBar(
                         tabs: const [
-                          Tab(text: 'Login'),
-                          Tab(text: 'Sign up'),
+                          Tab(text: AppStrings.login),
+                          Tab(text: AppStrings.signup),
                         ],
                         unselectedLabelColor: AppColors.white.withOpacity(0.5),
                         indicatorColor: AppColors.white,

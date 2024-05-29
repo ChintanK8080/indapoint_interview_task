@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indapoint_interview_task/app_constants/app_colors.dart';
+import 'package:indapoint_interview_task/app_constants/app_strings.dart';
 import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
 import 'package:indapoint_interview_task/services/user_services.dart';
 import 'package:indapoint_interview_task/view/widgets/custom_button.dart';
@@ -9,7 +10,7 @@ import 'package:otp_text_field/otp_field.dart';
 class VerificationPage extends StatelessWidget {
   VerificationPage({super.key});
   final controller = Get.find<UserServices>();
-  String otp = '';
+  String otp = "";
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +36,15 @@ class VerificationPage extends StatelessWidget {
               height: 30,
             ),
             Text(
-              'Verification Code',
+              AppStrings.verificationCode,
               style: AppTextStyle.titleText,
             ),
             const SizedBox(
               height: 12,
             ),
-            const Text(
-              'Enter the verification code that has been sent to the number +91 12345678.',
-              style: TextStyle(
+            Text(
+              "${AppStrings.enterVarificationCode} ${Get.arguments["phone"]}.",
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
                 color: Colors.grey,
@@ -70,7 +71,7 @@ class VerificationPage extends StatelessWidget {
                       color: AppColors.white, size: 15),
                   const SizedBox(width: 8),
                   Text(
-                    'Verify Code',
+                    AppStrings.verifyCode,
                     style: AppTextStyle.buttonText,
                   ),
                 ]),
@@ -88,10 +89,10 @@ class VerificationPage extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                        text: "Didn't receive the code? ",
+                        text: AppStrings.didntReciveCode,
                         style: AppTextStyle.textButtonStyle),
                     TextSpan(
-                      text: "Resend Code.",
+                      text: AppStrings.resendCode,
                       style: AppTextStyle.textButtonStyle.copyWith(
                         color: AppColors.primaryTeal,
                       ),

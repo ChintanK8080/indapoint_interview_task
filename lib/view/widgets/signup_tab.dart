@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:indapoint_interview_task/app_constants/app_strings.dart';
 
 class SignUpTab extends StatelessWidget {
   const SignUpTab({super.key});
@@ -6,7 +7,7 @@ class SignUpTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Sign Up Tab'),
+      child: Text(AppStrings.signUpTab),
     );
   }
 }

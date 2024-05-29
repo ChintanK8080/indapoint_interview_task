@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:indapoint_interview_task/app_constants/app_assets.dart';
 import 'package:indapoint_interview_task/app_constants/app_colors.dart';
+import 'package:indapoint_interview_task/app_constants/app_strings.dart';
 import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
 import 'package:indapoint_interview_task/services/user_services.dart';
 import 'package:indapoint_interview_task/utility/utilities.dart';
@@ -27,14 +28,14 @@ class LoginTab extends StatelessWidget {
               height: 30,
             ),
             Text(
-              'Welcome back!',
+              AppStrings.welcomeBack,
               style: AppTextStyle.titleText,
             ),
             const SizedBox(
               height: 12,
             ),
-            const Text(
-              'Enter your phone number to recieve a verification code to login.',
+             Text(
+              AppStrings.phoneNumberHint,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
@@ -46,7 +47,7 @@ class LoginTab extends StatelessWidget {
               controller: phoneNumberController,
               validator: (value) {
                 if (!(Utility.phoneNumberValidation(value ?? ''))) {
-                  return "Phone Number must Contain 10 digits";
+                  return AppStrings.phoneNumberValidation;
                 }
                 return null;
               },
@@ -63,7 +64,7 @@ class LoginTab extends StatelessWidget {
                     ),
                   ),
                 ),
-                hintText: '  Phone Number',
+                hintText: " ${AppStrings.phoneNumber}",
                 hintStyle: AppTextStyle.hintTextStyle,
                 focusedBorder: const UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -95,7 +96,7 @@ class LoginTab extends StatelessWidget {
                 },
                 borderRadius: 8,
                 child: Text(
-                  'Get Code',
+                  AppStrings.getCode,
                   style: AppTextStyle.buttonText,
                 ),
               ),
