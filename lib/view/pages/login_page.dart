@@ -1,19 +1,8 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: LoginPage(),
-    );
-  }
-}
+import 'package:indapoint_interview_task/app_constants/app_colors.dart';
+import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
+import 'package:indapoint_interview_task/view/widgets/login_tab.dart';
+import 'package:indapoint_interview_task/view/widgets/signup_tab.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -24,112 +13,57 @@ class LoginPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(200),
+          preferredSize: const Size.fromHeight(150),
           child: AppBar(
-            backgroundColor: Colors.teal,
+            backgroundColor: AppColors.primaryTeal,
             flexibleSpace: SafeArea(
-              child: Column(
-                children: const <Widget>[
-                  Spacer(),
-                  Text(
-                    'Poolite Driver',
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 25),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Spacer(),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                              text: "Poolit ",
+                              style: AppTextStyle.appbarTitleStyle1),
+                          TextSpan(
+                            text: "Driver",
+                            style: AppTextStyle.appbarTitleStyle2,
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  TabBar(
-                    tabs: [
-                      Tab(text: 'Login'),
-                      Tab(text: 'Sign Up'),
-                    ],
-                    indicatorColor: Colors.white,
-                    labelStyle: TextStyle(fontSize: 18),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 18,
+                    ),
+                    SizedBox(
+                      width: 200,
+                      child: TabBar(
+                        tabs: const [
+                          Tab(text: 'Login'),
+                          Tab(text: 'Sign up'),
+                        ],
+                        unselectedLabelColor: AppColors.white.withOpacity(0.5),
+                        indicatorColor: AppColors.white,
+                        labelStyle: AppTextStyle.tabBarLabel,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
-        body: TabBarView(
-          children: <Widget>[
+        body: const TabBarView(
+          children: [
             LoginTab(),
             SignUpTab(),
           ],
         ),
       ),
-    );
-  }
-}
-
-class LoginTab extends StatelessWidget {
-  const LoginTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const Text(
-            'Welcome back!',
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          const Text(
-            'Enter your phone number to recieve a verification code to login.',
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.grey,
-            ),
-          ),
-          const SizedBox(height: 16),
-          TextField(
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.phone),
-              hintText: 'Phone Number',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            keyboardType: TextInputType.phone,
-          ),
-          const SizedBox(height: 16),
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                // Handle OTP request
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-              ),
-              child: Text('Get OTP'),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// Placeholder widget for Sign Up tab
-class SignUpTab extends StatelessWidget {
-  const SignUpTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Sign Up Tab'),
     );
   }
 }
