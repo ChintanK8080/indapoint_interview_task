@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:indapoint_interview_task/models/user_model.dart';
+
+import 'user_model.dart';
 
 part 'user_response.freezed.dart';
 part 'user_response.g.dart';
@@ -10,6 +11,7 @@ class UserResponse with _$UserResponse {
     required int id,
     bool? status,
     String? token,
+    String? message,
     UserModel? user_details,
   }) = _UserResponse;
 

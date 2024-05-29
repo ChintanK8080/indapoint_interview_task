@@ -23,6 +23,7 @@ mixin _$UserResponse {
   int get id => throw _privateConstructorUsedError;
   bool? get status => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
   UserModel? get user_details => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +38,12 @@ abstract class $UserResponseCopyWith<$Res> {
           UserResponse value, $Res Function(UserResponse) then) =
       _$UserResponseCopyWithImpl<$Res, UserResponse>;
   @useResult
-  $Res call({int id, bool? status, String? token, UserModel? user_details});
+  $Res call(
+      {int id,
+      bool? status,
+      String? token,
+      String? message,
+      UserModel? user_details});
 
   $UserModelCopyWith<$Res>? get user_details;
 }
@@ -58,6 +64,7 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
     Object? id = null,
     Object? status = freezed,
     Object? token = freezed,
+    Object? message = freezed,
     Object? user_details = freezed,
   }) {
     return _then(_value.copyWith(
@@ -72,6 +79,10 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
       token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
+              as String?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String?,
       user_details: freezed == user_details
           ? _value.user_details
@@ -101,7 +112,12 @@ abstract class _$$UserResponseImplCopyWith<$Res>
       __$$UserResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, bool? status, String? token, UserModel? user_details});
+  $Res call(
+      {int id,
+      bool? status,
+      String? token,
+      String? message,
+      UserModel? user_details});
 
   @override
   $UserModelCopyWith<$Res>? get user_details;
@@ -121,6 +137,7 @@ class __$$UserResponseImplCopyWithImpl<$Res>
     Object? id = null,
     Object? status = freezed,
     Object? token = freezed,
+    Object? message = freezed,
     Object? user_details = freezed,
   }) {
     return _then(_$UserResponseImpl(
@@ -136,6 +153,10 @@ class __$$UserResponseImplCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
       user_details: freezed == user_details
           ? _value.user_details
           : user_details // ignore: cast_nullable_to_non_nullable
@@ -148,7 +169,11 @@ class __$$UserResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserResponseImpl implements _UserResponse {
   const _$UserResponseImpl(
-      {required this.id, this.status, this.token, this.user_details});
+      {required this.id,
+      this.status,
+      this.token,
+      this.message,
+      this.user_details});
 
   factory _$UserResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserResponseImplFromJson(json);
@@ -160,11 +185,13 @@ class _$UserResponseImpl implements _UserResponse {
   @override
   final String? token;
   @override
+  final String? message;
+  @override
   final UserModel? user_details;
 
   @override
   String toString() {
-    return 'UserResponse(id: $id, status: $status, token: $token, user_details: $user_details)';
+    return 'UserResponse(id: $id, status: $status, token: $token, message: $message, user_details: $user_details)';
   }
 
   @override
@@ -175,13 +202,15 @@ class _$UserResponseImpl implements _UserResponse {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.token, token) || other.token == token) &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.user_details, user_details) ||
                 other.user_details == user_details));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, token, user_details);
+  int get hashCode =>
+      Object.hash(runtimeType, id, status, token, message, user_details);
 
   @JsonKey(ignore: true)
   @override
@@ -202,6 +231,7 @@ abstract class _UserResponse implements UserResponse {
       {required final int id,
       final bool? status,
       final String? token,
+      final String? message,
       final UserModel? user_details}) = _$UserResponseImpl;
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
@@ -213,6 +243,8 @@ abstract class _UserResponse implements UserResponse {
   bool? get status;
   @override
   String? get token;
+  @override
+  String? get message;
   @override
   UserModel? get user_details;
   @override

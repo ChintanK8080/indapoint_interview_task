@@ -11,6 +11,7 @@ _$UserResponseImpl _$$UserResponseImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       status: json['status'] as bool?,
       token: json['token'] as String?,
+      message: json['message'] as String?,
       user_details: json['user_details'] == null
           ? null
           : UserModel.fromJson(json['user_details'] as Map<String, dynamic>),
@@ -21,5 +22,6 @@ Map<String, dynamic> _$$UserResponseImplToJson(_$UserResponseImpl instance) =>
       'id': instance.id,
       'status': instance.status,
       'token': instance.token,
+      'message': instance.message,
       'user_details': instance.user_details,
     };

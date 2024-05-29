@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:indapoint_interview_task/app_constants/app_assets.dart';
 import 'package:indapoint_interview_task/app_constants/app_colors.dart';
 import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
-import 'package:indapoint_interview_task/app_constants/routes.dart';
+import 'package:indapoint_interview_task/services/user_services.dart';
 import 'package:indapoint_interview_task/utility/utilities.dart';
 import 'package:indapoint_interview_task/view/widgets/custom_button.dart';
 
@@ -12,6 +12,7 @@ class LoginTab extends StatelessWidget {
   LoginTab({super.key});
   final phoneNumberController = TextEditingController();
   final globalKey = GlobalKey<FormState>();
+  final controller = Get.find<UserServices>();
 
   @override
   Widget build(BuildContext context) {
@@ -79,18 +80,26 @@ class LoginTab extends StatelessWidget {
             ),
             const SizedBox(height: 61),
             Flexible(
-                child: CustomButton(
-              onClick: () {
-                if (globalKey.currentState?.validate() ?? false) {
-                  Get.offAllNamed(Routes.home);
-                }
-              },
-              borderRadius: 8,
-              child: Text(
-                'Get Code',
-                style: AppTextStyle.buttonText,
+              child: CustomButton(
+                onClick: () {
+                  final phoneNumber =
+                      Utility.getCountryCode(phoneNumberController.text);
+                  if ((globalKey.currentState?.validate() ?? false) &&
+                      phoneNumber.length == 2) {
+                    controller.sendOtp(
+                      context,
+                      phone: phoneNumber[0],
+                      countryCode: phoneNumber[1],
+                    );
+                  }
+                },
+                borderRadius: 8,
+                child: Text(
+                  'Get Code',
+                  style: AppTextStyle.buttonText,
+                ),
               ),
-            )),
+            ),
           ],
         ),
       ),

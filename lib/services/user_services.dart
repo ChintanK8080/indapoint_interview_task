@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_toastr/flutter_toastr.dart';
 import 'package:get/get.dart';
 import 'package:indapoint_interview_task/app_constants/routes.dart';
-import 'package:indapoint_interview_task/models/user_model.dart';
+import 'package:indapoint_interview_task/models/user_model/user_model.dart';
 import 'package:indapoint_interview_task/repository/user_repository.dart';
 import 'package:indapoint_interview_task/utility/utilities.dart';
 
@@ -23,7 +23,8 @@ class UserServices extends GetxController {
       notifyChildrens();
       return;
     }
-    currentUser.value = (await userRepository.login(phone, otp));
+    currentUser.value = (await userRepository.login(context, phone, otp));
+    Get.offAllNamed(Routes.home);
     isLoading.value = false;
     notifyChildrens();
   }
@@ -38,8 +39,9 @@ class UserServices extends GetxController {
       notifyChildrens();
       return;
     }
-    await userRepository.sendOtp(phone, countryCode, () {
-      Get.toNamed(Routes.verification);
+    await userRepository.sendOtp(context, phone, countryCode, () {
+      Get.toNamed(Routes.verification,
+          arguments: {"phone": phone, "country_code": countryCode});
     });
     isLoading.value = false;
     notifyChildrens();

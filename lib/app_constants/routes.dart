@@ -16,7 +16,7 @@ final routes = [
   ),
   GetPage(
     name: Routes.verification,
-    page: () => const VerificationPage(),
+    page: () => VerificationPage(),
     bindings: [
       UserBindings(),
     ],

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:indapoint_interview_task/app_constants/app_colors.dart';
 import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
+import 'package:indapoint_interview_task/services/user_services.dart';
 import 'package:indapoint_interview_task/view/widgets/custom_button.dart';
 import 'package:otp_text_field/otp_field.dart';
 
 class VerificationPage extends StatelessWidget {
-  const VerificationPage({super.key});
+  VerificationPage({super.key});
+  final controller = Get.find<UserServices>();
+  String otp = '';
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +51,9 @@ class VerificationPage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             OTPTextField(
+              onChanged: (value) {
+                otp = value;
+              },
               width: MediaQuery.of(context).size.width,
               fieldWidth: 70,
               length: 4,
@@ -67,7 +74,10 @@ class VerificationPage extends StatelessWidget {
                     style: AppTextStyle.buttonText,
                   ),
                 ]),
-                onClick: () {},
+                onClick: () async {
+                  controller.login(context,
+                      phone: Get.arguments["phone"], otp: otp);
+                },
               ),
             ),
             const SizedBox(
