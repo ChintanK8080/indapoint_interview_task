@@ -25,14 +25,16 @@ class Utility {
         connectivityResult == ConnectivityResult.wifi);
   }
 
-  static List<String> getCountryCode(String phone) {
+  static List<int?> getCountryCode(String phone) {
     if (phone.characters.length > 2) {
       return [
-        [for (int i = 0; i < 2; i++) ...phone.characters.characterAt(i)].join(),
-        [
+        int.tryParse([
+          for (int i = 0; i < 2; i++) ...phone.characters.characterAt(i)
+        ].join()),
+        int.tryParse([
           for (int i = 2; i < phone.length; i++)
             ...phone.characters.characterAt(i)
-        ].join()
+        ].join())
       ];
     } else {
       return [];

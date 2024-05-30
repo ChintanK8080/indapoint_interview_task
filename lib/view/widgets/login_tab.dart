@@ -34,7 +34,7 @@ class LoginTab extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-             Text(
+            const Text(
               AppStrings.phoneNumberHint,
               style: TextStyle(
                 fontSize: 16,
@@ -86,11 +86,13 @@ class LoginTab extends StatelessWidget {
                   final phoneNumber =
                       Utility.getCountryCode(phoneNumberController.text);
                   if ((globalKey.currentState?.validate() ?? false) &&
-                      phoneNumber.length == 2) {
+                      phoneNumber.length == 2 &&
+                      phoneNumber[0] != null &&
+                      phoneNumber[1] != null) {
                     controller.sendOtp(
                       context,
-                      phone: phoneNumber[0],
-                      countryCode: phoneNumber[1],
+                      phone: phoneNumber[0]!,
+                      countryCode: phoneNumber[1]!,
                     );
                   }
                 },

@@ -36,10 +36,10 @@ class UserRepository {
     }
   }
 
-  Future<void> sendOtp(BuildContext context, String phone, String courntryCode,
+  Future<void> sendOtp(BuildContext context, int phone, int courntryCode,
       Function() onSuccess) async {
     final response = await http.post(
-      Uri.parse(ApiEndpints.verifyOtp),
+      Uri.parse(ApiEndpints.sendOtp),
       headers: {
         'Content-Type': 'application/json',
         "Authorization": "Bearer ",

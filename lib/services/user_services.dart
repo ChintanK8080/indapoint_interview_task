@@ -30,7 +30,7 @@ class UserServices extends GetxController {
   }
 
   Future<void> sendOtp(BuildContext context,
-      {required String phone, required String countryCode}) async {
+      {required int phone, required int countryCode}) async {
     isLoading.value = true;
     notifyChildrens();
     if (!(await Utility.checkInternet())) {
