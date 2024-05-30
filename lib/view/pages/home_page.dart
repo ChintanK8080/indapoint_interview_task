@@ -3,8 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:indapoint_interview_task/app_constants/app_assets.dart';
 import 'package:indapoint_interview_task/app_constants/app_colors.dart';
 import 'package:indapoint_interview_task/app_constants/app_strings.dart';
-import 'package:indapoint_interview_task/app_constants/app_textstyles.dart';
+import 'package:indapoint_interview_task/view/widgets/bottombar_button.dart';
 import 'package:indapoint_interview_task/view/widgets/children_detail_tile.dart';
+import 'package:indapoint_interview_task/view/widgets/custom_floating_action_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,12 +24,16 @@ class _HomePageState extends State<HomePage>
     }
   }
 
-  @override
-  void initState() {
+  initializeController() {
     tabController = TabController(length: 4, vsync: this);
     tabController?.addListener(() {
       _notify();
     });
+  }
+
+  @override
+  void initState() {
+    initializeController();
     super.initState();
   }
 
@@ -48,22 +53,21 @@ class _HomePageState extends State<HomePage>
         ],
         backgroundColor: AppColors.primaryTeal,
       ),
-      body: Column(children: [
-        Expanded(
-            child: TabBarView(controller: tabController, children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height,
-          ),
+      body: TabBarView(
+        controller: tabController,
+        children: [
+          const SizedBox(),
           ListView.separated(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             itemBuilder: (context, index) => const ChildrenDetailTile(),
             itemCount: 10,
             separatorBuilder: (context, index) => const SizedBox(height: 20),
           ),
+          // Temporary Widget For Driver and Profile Screen
           const SizedBox(),
           const SizedBox(),
-        ])),
-      ]),
+        ],
+      ),
       bottomNavigationBar: Container(
         height: 78,
         width: MediaQuery.of(context).size.width,
@@ -72,95 +76,34 @@ class _HomePageState extends State<HomePage>
           indicatorColor: AppColors.transparent,
           controller: tabController,
           tabs: [
-            Column(
-              children: [
-                SvgPicture.asset(
-                  AppAssets.homeIcon,
-                  colorFilter: ColorFilter.mode(
-                      tabController?.index == 0
-                          ? AppColors.primaryTeal
-                          : AppColors.lightGray,
-                      BlendMode.srcIn),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  AppStrings.home,
-                  style: AppTextStyle.bottomTabBarText.copyWith(
-                      color: tabController?.index == 0
-                          ? AppColors.primaryTeal
-                          : null),
-                ),
-              ],
+            BottombarButton(
+                buttonIndex: 0,
+                currentIndex: tabController?.index,
+                text: AppStrings.home,
+                iconPath: AppAssets.homeIcon),
+            BottombarButton(
+              buttonIndex: 1,
+              currentIndex: tabController?.index,
+              text: AppStrings.children,
+              iconPath: AppAssets.childrenIcon,
             ),
-            Column(
-              children: [
-                SvgPicture.asset(
-                  AppAssets.childrenIcon,
-                  colorFilter: ColorFilter.mode(
-                      tabController?.index == 1
-                          ? AppColors.primaryTeal
-                          : AppColors.lightGray,
-                      BlendMode.srcIn),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  AppStrings.children,
-                  style: AppTextStyle.bottomTabBarText.copyWith(
-                      color: tabController?.index == 1
-                          ? AppColors.primaryTeal
-                          : null),
-                ),
-              ],
+            BottombarButton(
+              buttonIndex: 2,
+              currentIndex: tabController?.index,
+              text: AppStrings.driver,
+              iconPath: AppAssets.driverIcon,
             ),
-            Column(
-              children: [
-                SvgPicture.asset(
-                  AppAssets.driverIcon,
-                  colorFilter: ColorFilter.mode(
-                      tabController?.index == 2
-                          ? AppColors.primaryTeal
-                          : AppColors.lightGray,
-                      BlendMode.srcIn),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  AppStrings.driver,
-                  style: AppTextStyle.bottomTabBarText.copyWith(
-                      color: tabController?.index == 2
-                          ? AppColors.primaryTeal
-                          : null),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                SvgPicture.asset(
-                  AppAssets.profileIcon,
-                  colorFilter: ColorFilter.mode(
-                      tabController?.index == 3
-                          ? AppColors.primaryTeal
-                          : AppColors.lightGray,
-                      BlendMode.srcIn),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  AppStrings.profile,
-                  style: AppTextStyle.bottomTabBarText.copyWith(
-                      color: tabController?.index == 3
-                          ? AppColors.primaryTeal
-                          : null),
-                ),
-              ],
+            BottombarButton(
+              buttonIndex: 3,
+              currentIndex: tabController?.index,
+              text: AppStrings.profile,
+              iconPath: AppAssets.profileIcon,
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: AppColors.primaryTeal,
-        child: SvgPicture.asset(
-          AppAssets.addIcon,
-        ),
+      floatingActionButton: CustomFloatingButton(
+        onClick: () {},
       ),
     );
   }

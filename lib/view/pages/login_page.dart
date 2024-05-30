@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
         body:  TabBarView(
           children: [
             LoginTab(),
-            SignUpTab(),
+            const SignUpTab(),
           ],
         ),
       ),
